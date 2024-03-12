@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { NewBookComponent } from './book/new-book/new-book.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
+import { EditBookComponent } from './book/edit-book/edit-book.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent
   },
+  
   {
     path: 'register', component: RegisterComponent
   },
@@ -25,6 +27,10 @@ const routes: Routes = [
   },
   {
     path: 'add-book', component: NewBookComponent
+  },
+  // to fix route for edit
+  {
+    path: 'edit-book', component: EditBookComponent
   },
   {
     path: 'books/:bookId', component: BookDetailsComponent

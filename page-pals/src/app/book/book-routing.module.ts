@@ -10,19 +10,26 @@ const routes: Routes = [
   {
     path: 'books',
     children: [
-      // {
-      //     path: '',
-      //     pathMatch: 'full',
-      //     component: BooksCatalogComponent,
-      // },
       {
-          path: ':bookId',
-          component: BookDetailsComponent,
-      }
+          path: '',
+          pathMatch: 'full',
+          component: BooksCatalogComponent,
+      },
+      // {
+      //     path: ':bookId',
+      //     component: BookDetailsComponent,
+      // }
     ]
   },
   {
     path: 'add-book', component: NewBookComponent,
+    // canActivate:[AuthActivate],
+  
+  },
+  // to fix route for edit
+
+  {
+    path: 'edit-book', component: NewBookComponent,
     // canActivate:[AuthActivate],
   
   },
