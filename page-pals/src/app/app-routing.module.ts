@@ -25,10 +25,10 @@ const routes: Routes = [
   {
     path: 'add-book', component: NewBookComponent
   },
-  // {
-  //   path: '404', component: NotFoundComponent
-  // },
-  {path: '**', redirectTo: '404'}
+  {
+    path: '404',  redirectTo: '/home'
+  },
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({
