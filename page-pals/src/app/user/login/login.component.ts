@@ -21,10 +21,8 @@ export class LoginComponent {
       return;  
     }
 
-console.log(form.value);
 
     const { email,password} = form.value;
-    console.log(email,password);
     
      this.userService.login(email,password).subscribe(()=>{
 

@@ -42,14 +42,14 @@ export class UserService implements OnDestroy {
   }
 
   register(
-    username: string,
     email: string,
     password: string,
 
   
   ) {
-    return this.http.post<User>('/api/register', {
-      username,
+    const { appUrl } = environment;
+
+    return this.http.post<User>(`${appUrl}/users/register`, {
       email,
       password,
       
