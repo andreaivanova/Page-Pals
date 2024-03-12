@@ -22,8 +22,12 @@ export class RegisterComponent {
     }
 
 
-    const { email,password} = form.value;
-    
+    const { email,password, rePassword} = form.value;
+    if(password!== rePassword){
+      this.errorMessage =  'Passwords don\'t match';
+
+      return;
+    }
      this.userService.register(email,password).subscribe(()=>{
 
        this.router.navigate(['/home'])
