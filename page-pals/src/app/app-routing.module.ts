@@ -4,6 +4,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
+import { NewBookComponent } from './book/new-book/new-book.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'books', component: BooksCatalogComponent
+  },
+  {
+    path: 'add-book', component: NewBookComponent
   },
   // {
   //   path: '404', component: NotFoundComponent
