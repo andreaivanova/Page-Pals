@@ -8,6 +8,9 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
+import { BookModule } from './book/book.module';
+import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,11 @@ import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BookModule,
+    UserModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

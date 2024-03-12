@@ -5,6 +5,7 @@ import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { NewBookComponent } from './book/new-book/new-book.component';
+import { BookDetailsComponent } from './book/book-details/book-details.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'add-book', component: NewBookComponent
+  },
+  {
+    path: 'books/:bookId', component: BookDetailsComponent
   },
   {
     path: '404',  redirectTo: '/home'

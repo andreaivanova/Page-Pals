@@ -3,21 +3,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewBookComponent } from './new-book/new-book.component';
 import { BooksCatalogComponent } from '../books-catalog/books-catalog.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   
   {
     path: 'books',
     children: [
-      {
-          path: '',
-          pathMatch: 'full',
-          component: BooksCatalogComponent,
-      },
       // {
-      //     path: ':themeId',
-      //     component: CurrentThemeComponent,
-      // }
+      //     path: '',
+      //     pathMatch: 'full',
+      //     component: BooksCatalogComponent,
+      // },
+      {
+          path: ':bookId',
+          component: BookDetailsComponent,
+      }
     ]
   },
   {
