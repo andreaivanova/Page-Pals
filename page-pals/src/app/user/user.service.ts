@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
@@ -70,10 +70,21 @@ export class UserService implements OnDestroy {
     ));;
   }
 
-  logout() {
+  logout(token: string) {
+
+    const { appUrl } = environment;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Authorization': token
+    })
     return this.http
-      .post<User>('/api/logout', {})
-      .pipe(tap((user) => this.user$$.next(undefined)));
+      .get<User>(`${appUrl}/users/logout`,{ headers: headers })
+      .pipe(tap((user) => 
+{
+  localStorage.removeItem('currentUser');
+  this.user$$.next(undefined)
+}
+      ));
   }
 
 
