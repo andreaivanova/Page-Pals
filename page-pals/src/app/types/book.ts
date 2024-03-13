@@ -17,6 +17,7 @@ export interface Book {
 
     // _id: string;
     name: string;
+    // title: string;
     description: string;
     // _ownerId: string,
     // _createdOn: string;

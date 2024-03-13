@@ -8,4 +8,9 @@ import { Book } from '../types/book';
 })
 export class BookService {
   constructor(private http: HttpClient) {}
+
+  getThemes() {
+    const { appUrl } = environment;
+    return this.http.get<Book[]>(`${appUrl}/data/books`);
+  }
 }
