@@ -11,3 +11,16 @@
 //     updatedAt: string;
 //     __v: number;
 // }
+
+
+export interface Book {
+
+    // _id: string;
+    name: string;
+    description: string;
+    // _ownerId: string,
+    // _createdOn: string;
+    // updatedAt: string;
+    photo: string,
+    // comments: string[],
+}
