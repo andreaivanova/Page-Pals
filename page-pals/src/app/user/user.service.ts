@@ -38,7 +38,13 @@ export class UserService implements OnDestroy {
         email,
         password,
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(tap((user) => 
+      {
+        // console.log(user);
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.user$$.next(user)
+      }
+      ));
   }
 
   register(
@@ -54,7 +60,14 @@ export class UserService implements OnDestroy {
       password,
       
     })
-    .pipe(tap((user) => this.user$$.next(user)));;
+    .pipe(tap((user) => 
+{
+  localStorage.setItem('currentUser', JSON.stringify(user));
+
+  return this.user$$.next(user)
+}
+
+    ));;
   }
 
   logout() {
@@ -70,6 +83,10 @@ export class UserService implements OnDestroy {
     .pipe(tap((user) => this.user$$.next(user)));
   }
   
+
+  // setUser(user: any): void {
+  //   localStorage.setItem('currentUser', JSON.stringify(user));
+  // }
  
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

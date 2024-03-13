@@ -22,7 +22,7 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN"  #form="ngForm" (ngSubmit)="login(form)">
+                                <form id="contactForm" data-sb-form-api-token="API_TOKEN"  #form="ngForm" (ngSubmit)="register(form)">
                                     <!-- Name input-->
                                     <!-- <div class="form-floating mb-3">
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
@@ -31,24 +31,56 @@
                                     </div> -->
                                     <!-- Email address input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                        <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email"  #inputEmail="ngModel" ngModel required />
                                         <label for="email">Email address</label>
                                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+
+                                        <ng-container *ngIf="inputEmail.touched">
+
+                                            <p class="error" *ngIf="inputEmail.errors?.['required']">
+                                                Email is required
+                                            </p>
+                        
+                                            <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
+                                                Email is not valid
+                                            </p>
+                                           
+                                        </ng-container>
                                     </div>
                                   
                               
                                     <!-- Password input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your password..." data-sb-validations="required" />
+                                        <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password..." data-sb-validations="required" ngModel #inputPassword="ngModel" required minlength="6" />
                                         <label for="name">Password</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A password is required.</div>
+
+
+                                        <ng-container *ngIf="inputPassword.touched">
+                    
+                                            <p class="error" *ngIf="inputPassword.errors?.['required']">
+                                                Password is required
+                                            </p>
+                                            <p class="error"  *ngIf="inputPassword.errors?.['minlength']">
+                                                Password must be at least 6 characters
+                                            </p>
+                                        </ng-container>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your password..." data-sb-validations="required" />
+                                        <input class="form-control" id="rePassword" name="rePassword" type="password" placeholder="Enter your password..." data-sb-validations="required" ngModel #inputRePassword="ngModel"  required minlength="6" />
                                         <label for="name">Repeat Password</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A password is required.</div>
+                                        <ng-container *ngIf="inputPassword.touched">
+                    
+                                            <p class="error" *ngIf="inputRePassword.errors?.['required']">
+                                              Repeat  Password is required
+                                            </p>
+                                            <p class="error"  *ngIf="inputRePassword.errors?.['minlength']">
+                                                Repeat Password must be at least 6 characters
+                                            </p>
+                                        </ng-container>
                                     </div>
                                     <!-- Submit success message-->
                                     <!---->
@@ -69,6 +101,8 @@
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
                                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Register</button></div>
+
+                                    <p class="notification error-message"  *ngIf="errorMessage">{{errorMessage}}</p> 
                                 </form>
                             </div>
                         </div>
