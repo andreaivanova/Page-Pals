@@ -19,7 +19,7 @@ export class BooksCatalogComponent implements OnInit{
       next: (books)=>{
         
         this.bookList = books;
-        console.log(this.bookList);
+
       } ,
       error: (err) =>{
         console.error(`error: ${err}`)

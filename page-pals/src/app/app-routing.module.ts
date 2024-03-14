@@ -30,10 +30,10 @@ const routes: Routes = [
   },
   // to fix route for edit
   {
-    path: 'edit-book', component: EditBookComponent
+    path: 'books/:_id/edit', component: EditBookComponent
   },
   {
-    path: 'books/:bookId', component: BookDetailsComponent
+    path: 'books/:_id', component: BookDetailsComponent
   },
   {
     path: '404',  redirectTo: '/home'

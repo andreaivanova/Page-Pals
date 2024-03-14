@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit{
       next: (books)=>{
         
         this.bookList = books.slice(0,3);
-        console.log(this.bookList);
+    
       } ,
       error: (err) =>{
         console.error(`error: ${err}`)
