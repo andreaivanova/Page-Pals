@@ -11,6 +11,8 @@ export class BookService {
 
   getThemes() {
     const { appUrl } = environment;
-    return this.http.get<Book[]>(`${appUrl}/data/books`);
+    return this.http.get<Book[]>(`${appUrl}/data/books/?sortBy=_createdOn%20desc`);
   }
+
+
 }

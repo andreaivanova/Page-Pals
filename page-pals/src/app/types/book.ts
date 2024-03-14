@@ -15,13 +15,14 @@
 
 export interface Book {
 
-    // _id: string;
-    name: string;
+    _id: string;
+    title: string;
+    author: string;
     // title: string;
     description: string;
-    // _ownerId: string,
+    _ownerId: string,
     // _createdOn: string;
     // updatedAt: string;
     photo: string,
-    // comments: string[],
+    comments: string[],
 }
