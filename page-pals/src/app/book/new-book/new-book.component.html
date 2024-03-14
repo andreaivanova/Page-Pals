@@ -1,12 +1,10 @@
 
 
 <main class="flex-shrink-0">
-    <!-- Navigation-->
-
-    <!-- Page content-->
+   
     <section class="py-5">
         <div class="container px-5">
-            <!-- Contact form-->
+            
             <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                 <div class="text-center mb-5">
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
@@ -15,34 +13,82 @@
                 </div>
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                      
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" 
+                        #form="ngForm" (ngSubmit)="newBookSubmitHandler(form)" >
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" name="title" type="text" placeholder="Enter book title..." data-sb-validations="required" 
+                                ngModel
+                                #inputTitle="ngModel"
+                                required
+                                minlength="4"
+                                />
                                 <label for="title">Title</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A book title is required.</div>
+
+                                <ng-container *ngIf="inputTitle.touched">
+                                    <p class="error" *ngIf="inputTitle.errors?.['required']">
+                                      Book title  is required
+                                    </p>
+                                    <p class="error" *ngIf="inputTitle.errors?.['minlength']">
+                                        Book title must be at least 4 characters long
+                                    </p>
+                                  </ng-container>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="author" type="text" placeholder="Author" data-sb-validations="required" />
-                                <label for="name">Author</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A book name is required.</div>
+                                <input class="form-control" id="author" name="author" type="text" placeholder="Author" data-sb-validations="required" 
+                                ngModel
+                                #inputAuthor="ngModel"
+                                required
+                                minlength="4"/>
+                                <label for="author">Author</label>
+                              
+                                <ng-container *ngIf="inputAuthor.touched">
+                                    <p class="error" *ngIf="inputAuthor.errors?.['required']">
+                                     Author is required
+                                    
+                                    </p>
+                                    <p class="error" *ngIf="inputAuthor.errors?.['minlength']">
+                                        Author must be at least 4 characters long
+
+                                    </p>
+                                  </ng-container>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Photo URL</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">An URL is required.</div>
+                                <input class="form-control" id="photo" name="photo" type="text" placeholder="Enter photo URL..." data-sb-validations="required" 
+                                ngModel
+                                #inputPhoto="ngModel"
+                                required
+                               />
+                                <label for="photo">Photo URL</label>
+                                <ng-container *ngIf="inputPhoto.touched">
+                                    <p class="error" *ngIf="inputPhoto.errors?.['required']">
+                                     Photo URL is required
+                                    
+                                    </p>
+                                    
+                                  </ng-container>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="description" name="description" type="text" placeholder="Enter book description..." 
+                                ngModel
+                                #inputDescription="ngModel"
+                                required
+                                minlength="50"/>
                                 <label for="name">Description</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A book description is required.</div>
+                                <ng-container *ngIf="inputDescription.touched">
+                                    <p class="error" *ngIf="inputDescription.errors?.['required']">
+                                        Description is required
+                                    
+                                    </p>
+
+                                    <p class="error" *ngIf="inputDescription.errors?.['minlength']">
+                                        Description must be at least 50 characters long
+
+                                    </p>
+                                    
+                                  </ng-container>
                             </div>
                             <!-- Submit success message-->
                             <!---->

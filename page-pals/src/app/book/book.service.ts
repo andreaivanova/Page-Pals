@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Book } from '../types/book';
@@ -15,4 +15,25 @@ export class BookService {
   }
 
 
+  createBook(token: string, title: string, author: string, photo: string, description: string){
+    const { appUrl } = environment;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Authorization': token
+
+    });
+
+
+    return this.http.post<Book>(`${appUrl}/data/books`, {
+      title,
+      author,
+      photo,
+      description,
+
+      
+    }, {headers: headers});
+  }
+
+
+ 
 }
