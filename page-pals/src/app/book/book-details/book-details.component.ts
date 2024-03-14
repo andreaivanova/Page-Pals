@@ -12,12 +12,11 @@ import { Book } from '../../types/book';
 export class BookDetailsComponent implements OnInit {
 
   book!: Book;
-  createdOn: string ="";
-  token: string = JSON.parse(localStorage.getItem('currentUser')!).accessToken;
-
-
+  createdOn: string = "";
+  token: string = localStorage.getItem('currentUser') ?  JSON.parse(localStorage.getItem('currentUser')!).accessToken : '';
+  user =  localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')!) : '';
   deleteHandler(){
-    this.bookService.deleteBook(this.token,this.book._id).subscribe(()=>{
+    this.bookService.deleteBook(this.token,this.book!._id!).subscribe(()=>{
       this.router.navigate(['/books'])
     });
 
@@ -25,7 +24,8 @@ export class BookDetailsComponent implements OnInit {
   loadBook(): void{
     const id = this.activedRoute.snapshot.params['_id']
     this.bookService.getBook(id).subscribe((book)=>{
-const date = new Date(book._createdOn);
+      console.log(book);
+      
       this.createdOn = new Date(book._createdOn).toString().slice(0,15);
     
       this.book = book;

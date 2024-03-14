@@ -27,8 +27,10 @@
                                     <div class="text-muted fst-italic mb-2">Created on {{createdOn}}</div>
                                     <!-- Post categories-->
                                     <!-- MAKE IT CONDITIONAL -->
-                                    <a routerLink="/edit-book" class="badge bg-primary bg-gradient rounded-pill mb-2" routerLink="/books/{{book._id}}/edit">Edit</a>
-                                    <a (click)="deleteHandler()" class="badge bg-primary bg-gradient rounded-pill mb-2">Delete</a>
+
+                                    
+                                    <a *ngIf="user._id && user._id === book._ownerId" routerLink="/edit-book" class="badge bg-primary bg-gradient rounded-pill mb-2" routerLink="/books/{{book._id}}/edit">Edit</a>
+                                    <a *ngIf="user._id && user._id === book._ownerId"  (click)="deleteHandler()" class="badge bg-primary bg-gradient rounded-pill mb-2">Delete</a>
                                    
                                 </header>
                                 <!-- Preview image figure-->
@@ -46,12 +48,11 @@
                                 <div class="card bg-light">
                                     <div class="card-body">
                                         <!-- Comment form-->
-                                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                                        <form class="mb-4" *ngIf="user._id && user._id !== book._ownerId" ><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
 
-                                        <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Comment</button></div>
-                                        <hr>
-                                        <hr>
-                                        <hr>
+                                        <div class="d-grid" *ngIf="user._id && user._id !== book._ownerId"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Comment</button></div>
+                                   <hr>
+                                   
                                         <!-- Comment with nested comments-->
                                         <div class="d-flex mb-4">
                                             <!-- Parent comment-->
