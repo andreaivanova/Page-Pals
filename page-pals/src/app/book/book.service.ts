@@ -9,9 +9,13 @@ import { Book } from '../types/book';
 export class BookService {
   constructor(private http: HttpClient) {}
 
-  getThemes() {
+  getBooks() {
     const { appUrl } = environment;
     return this.http.get<Book[]>(`${appUrl}/data/books/?sortBy=_createdOn%20desc`);
+  }
+  getBook(id: string) {
+    const { appUrl } = environment;
+    return this.http.get<Book>(`${appUrl}/data/books/${id}`);
   }
 
 

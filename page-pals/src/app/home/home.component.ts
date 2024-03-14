@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.bookService.getThemes().subscribe(  {
+    this.bookService.getBooks().subscribe(  {
       next: (books)=>{
         
         this.bookList = books.slice(0,3);

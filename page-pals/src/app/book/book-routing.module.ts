@@ -28,11 +28,11 @@ const routes: Routes = [
   },
   // to fix route for edit
 
-  {
-    path: 'edit-book', component: NewBookComponent,
-    // canActivate:[AuthActivate],
+  // {
+  //   path: 'edit-book', component: NewBookComponent,
+  //   // canActivate:[AuthActivate],
   
-  },
+  // },
   ];
 
 @NgModule({
