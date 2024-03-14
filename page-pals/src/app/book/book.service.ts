@@ -38,6 +38,16 @@ export class BookService {
     }, {headers: headers});
   }
 
+  deleteBook(token: string, id: string){
+    const { appUrl } = environment;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Authorization': token
 
+    });
+
+
+    return this.http.delete(`${appUrl}/data/books/${id}`,  {headers: headers});
+  }
  
 }

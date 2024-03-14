@@ -28,9 +28,8 @@
                                     <!-- Post categories-->
                                     <!-- MAKE IT CONDITIONAL -->
                                     <a routerLink="/edit-book" class="badge bg-primary bg-gradient rounded-pill mb-2" routerLink="/books/{{book._id}}/edit">Edit</a>
-                                    <a routerLink="/delete-book" class="badge bg-primary bg-gradient rounded-pill mb-2">Delete</a>
-                                    <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a> -->
-                                    <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                                    <a (click)="deleteHandler()" class="badge bg-primary bg-gradient rounded-pill mb-2">Delete</a>
+                                   
                                 </header>
                                 <!-- Preview image figure-->
                                 <figure class="mb-4"><img class="img-fluid rounded" src="{{book.photo}}" alt="..." /></figure>
