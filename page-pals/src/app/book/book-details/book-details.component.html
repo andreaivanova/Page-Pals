@@ -58,9 +58,10 @@
                                                 The comment must be at least 20 characters long
                                             </p>
                                         </ng-container>
-                                        </form>
-
-                                        <div class="d-grid" *ngIf="user._id && user._id !== book._ownerId"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Comment</button></div>
+                                        
+                                        <div class="d-grid" *ngIf="user._id && user._id !== book._ownerId"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Comment</button>
+                                        </div>
+                                    </form>
                                    <hr>
                                    
                                         <!-- Comment with nested comments-->

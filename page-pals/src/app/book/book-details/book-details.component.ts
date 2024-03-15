@@ -29,10 +29,10 @@ export class BookDetailsComponent implements OnInit {
     if(form.invalid){
       return;
     }
-console.log(form.value)
+
     const{comment}=form.value;
    
-    this.bookService.commentOnBook(this.token,id, this.user.email, comment).subscribe({
+    this.bookService.commentOnBook(this.token,id, this.user.email, comment, this.user._id).subscribe({
       next: (res)=> {
         console.log(res)
         this.router.navigate(['/books'])
