@@ -48,7 +48,17 @@
                                 <div class="card bg-light">
                                     <div class="card-body">
                                         <!-- Comment form-->
-                                        <form class="mb-4" *ngIf="user._id && user._id !== book._ownerId" ><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                                        <form class="mb-4" *ngIf="user._id && user._id !== book._ownerId"  #form="ngForm" (ngSubmit)="commentHandler(form)"><textarea class="form-control" rows="3" name="comment" id="comment" placeholder="Join the discussion and leave a comment!" ngModel  #inputComment="ngModel" required  minlength="20">
+                                        </textarea>
+                                        <ng-container *ngIf="inputComment.touched">
+                                            <p class="error" *ngIf="inputComment.errors?.['required']">
+                                              Comment  is required
+                                            </p>
+                                            <p class="error" *ngIf="inputComment.errors?.['minlength']">
+                                                The comment must be at least 20 characters long
+                                            </p>
+                                        </ng-container>
+                                        </form>
 
                                         <div class="d-grid" *ngIf="user._id && user._id !== book._ownerId"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Comment</button></div>
                                    <hr>

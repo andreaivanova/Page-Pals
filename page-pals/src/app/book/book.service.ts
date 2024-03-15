@@ -69,6 +69,21 @@ export class BookService {
     return this.http.delete(`${appUrl}/data/books/${id}`,  {headers: headers});
   }
 
-  // updateBook
+  commentOnBook(token: string, id:string, email:string, comment:string){
+    const { appUrl } = environment;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Authorization': token
+
+    });
+const data = {
+  comments: [[ email, comment ]]
+}
+    return this.http.post<Book>(`${appUrl}/data/books/${id}`, 
+   data
+      
+      
+    , {headers: headers});
+  }
  
 }

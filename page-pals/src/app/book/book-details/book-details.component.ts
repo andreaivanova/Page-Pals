@@ -3,6 +3,7 @@ import { BookService } from '../book.service';
 import { UserService } from '../../user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../../types/book';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-book-details',
@@ -21,10 +22,32 @@ export class BookDetailsComponent implements OnInit {
     });
 
   }
+
+  commentHandler(form: NgForm){
+    const id = this.activedRoute.snapshot.params['_id']
+    
+    if(form.invalid){
+      return;
+    }
+console.log(form.value)
+    const{comment}=form.value;
+   
+    this.bookService.commentOnBook(this.token,id, this.user.email, comment).subscribe({
+      next: (res)=> {
+        console.log(res)
+        this.router.navigate(['/books'])
+      },
+      error: (error)=> {
+        console.log(error)
+        this.router.navigate(['/books'])
+      }
+    })
+
+  }
   loadBook(): void{
     const id = this.activedRoute.snapshot.params['_id']
     this.bookService.getBook(id).subscribe((book)=>{
-      // console.log(book);
+   
       
       this.createdOn = new Date(book._createdOn).toString().slice(0,15);
     
@@ -38,6 +61,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.loadBook();
   }
 

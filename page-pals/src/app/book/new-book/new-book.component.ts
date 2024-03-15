@@ -18,7 +18,10 @@ export class NewBookComponent   {
     }
     const {title, author, photo, description} = form.value;
     this.bookService.createBook(this.token, title, author, photo, description).subscribe({
-      next: ()=> {this.router.navigate(['/books'])},
+      next: ()=> {
+
+        this.router.navigate(['/books'])
+    },
       error: (error)=> {
         console.log(error)
         this.router.navigate(['/books'])
