@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './new-book.component.html',
   styleUrl: './new-book.component.css'
 })
-export class NewBookComponent  {
+export class NewBookComponent   {
 
   token: string = JSON.parse(localStorage.getItem('currentUser')!).accessToken;
   constructor(private bookService: BookService, private router: Router){}

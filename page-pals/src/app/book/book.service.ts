@@ -38,6 +38,25 @@ export class BookService {
     }, {headers: headers});
   }
 
+
+  editBook(token: string, id:string ,title: string, author: string, photo: string, description: string){
+    const { appUrl } = environment;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-Authorization': token
+
+    });
+
+    return this.http.put<Book>(`${appUrl}/data/books/${id}`, {
+      title,
+      author,
+      photo,
+      description,
+
+      
+    }, {headers: headers});
+  }
+
   deleteBook(token: string, id: string){
     const { appUrl } = environment;
     const headers = new HttpHeaders({
@@ -49,5 +68,7 @@ export class BookService {
 
     return this.http.delete(`${appUrl}/data/books/${id}`,  {headers: headers});
   }
+
+  // updateBook
  
 }

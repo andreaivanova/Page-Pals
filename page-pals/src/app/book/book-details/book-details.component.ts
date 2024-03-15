@@ -24,7 +24,7 @@ export class BookDetailsComponent implements OnInit {
   loadBook(): void{
     const id = this.activedRoute.snapshot.params['_id']
     this.bookService.getBook(id).subscribe((book)=>{
-      console.log(book);
+      // console.log(book);
       
       this.createdOn = new Date(book._createdOn).toString().slice(0,15);
     
