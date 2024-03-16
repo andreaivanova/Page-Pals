@@ -25,4 +25,5 @@ export interface Book {
     
     photo: string,
     comments: [],
+    
 }

@@ -108,4 +108,13 @@ export class BookService {
       { headers: headers }
     );
   }
+
+
+  loadCommentsForACertainPost(bookId: string){
+    const { appUrl } = environment;
+    return this.http.get<Comment[]>(
+      `${appUrl}/data/comments/`
+    );
+    // ?select=${bookId}
+  }
 }

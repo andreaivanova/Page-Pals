@@ -8,5 +8,5 @@ export interface Comment {
     _ownerId: string,
     ownerEmail: string,
     comment: string,
-   
+    _createdOn: string,
 }
