@@ -45,7 +45,7 @@ export class UserService implements OnDestroy {
       {
         // console.log(user);
         localStorage.setItem('currentUser', JSON.stringify(user));
-        this.user$$.next(user)
+      return   this.user$$.next(user)
       }
       ));
   }
@@ -85,7 +85,7 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => 
 {
   localStorage.removeItem('currentUser');
-  this.user$$.next(undefined)
+ return this.user$$.next(undefined)
 }
       ));
   }
