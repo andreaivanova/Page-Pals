@@ -14,6 +14,7 @@ import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     BookModule,
     UserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([]) 
   ],
   providers: [],
   bootstrap: [AppComponent]

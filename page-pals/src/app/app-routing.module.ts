@@ -8,7 +8,7 @@ import { NewBookComponent } from './book/new-book/new-book.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { EditBookComponent } from './book/edit-book/edit-book.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './guards/auth-guard.guard';
+
 
 const routes: Routes = [
   {
@@ -34,12 +34,12 @@ const routes: Routes = [
   },
   {
     path: 'add-book', component: NewBookComponent,  
-    canActivate: [AuthGuard] 
   },
+ 
   // to fix route for edit
   {
     path: 'books/:_id/edit', component: EditBookComponent, 
-     canActivate: [AuthGuard] 
+    
   },
   {
     path: 'books/:_id', component: BookDetailsComponent
