@@ -21,12 +21,13 @@ const routes: Routes = [
   
   {
     path: 'register', component: RegisterComponent,
-    canActivate: [GuestGuard]
+    
+  
      
   },
   {
     path: 'login', component: LoginComponent, 
-    canActivate: [GuestGuard]
+   
    
   },
   {
