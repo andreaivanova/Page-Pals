@@ -1,35 +1,32 @@
 {
-  "name": "rest-api",
-  "version": "1.0.0",
-  "description": "REST-api for back-end of React project",
-  "main": "index.js",
-  "scripts": {
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BoogyHS/REST-api.git"
-  },
-  "keywords": [
-    "rest-api"
-  ],
-  "author": "BoogyHS",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BoogyHS/REST-api/issues"
-  },
-  "homepage": "https://github.com/BoogyHS/REST-api#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.19"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+    "name": "softuni-practice-server",
+    "version": "0.8.1",
+    "description": "https://docs.google.com/drawings/d/1SOUTqYK47CVph_WfKmjJoZJbjH4sBu7Bm0L4PSy9wUQ/edit?usp=sharing",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon -e * index.js -dev",
+        "test": "mocha tests",
+        "client": "rollup --config client.config.js",
+        "build": "rollup --config rollup.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/softuni-practice-server/softuni-practice-server.git"
+    },
+    "keywords": [],
+    "author": "Viktor Kostadinov",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/softuni-practice-server/softuni-practice-server/issues"
+    },
+    "homepage": "https://github.com/softuni-practice-server/softuni-practice-server#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "chai": "4.1.2",
+        "rollup": "^2.39.0"
+    }
 }

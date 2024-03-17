@@ -1,28 +1,23 @@
-global.__basedir = __dirname;
-require('dotenv').config()
-const dbConnector = require('./config/db');
-// const mongoose = require('mongoose');
-const apiRouter = require('./router');
-const cors = require('cors');
-// const config = require('./config/config');
-const { errorHandler } = require('./utils');
+const http = require('http');
+const createHandler = require('./src/requestHandler');
+const services = require('./src/services');
+const createStorage = require('./src/plugins/storage');
+const createAuth = require('./src/plugins/auth');
+const createUtil = require('./src/plugins/util');
+const createRules = require('./src/plugins/rules');
 
-dbConnector()
-  .then(() => {
-    const config = require('./config/config');
+const settings = require('./settings.json');
 
-    const app = require('express')();
-    require('./config/express')(app);
+const plugins = [
+    createStorage(settings),
+    createAuth(settings),
+    createUtil(settings),
+    createRules(settings)
+];
 
-    app.use(cors({
-      origin: config.origin,
-      credentials: true
-    }));
+const server = http.createServer(createHandler(plugins, services));
 
-    app.use('/api', apiRouter);
-
-    app.use(errorHandler);
-
-    app.listen(config.port, console.log(`Listening on port ${config.port}!`));
-  })
-  .catch(console.error);
+const port = 3030;
+server.listen(port);
+console.log(`Server started on port ${port}. You can make requests to http://localhost:${port}/`);
+console.log(`Admin panel located at http://localhost:${port}/admin`);
