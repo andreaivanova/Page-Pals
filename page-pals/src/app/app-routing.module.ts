@@ -9,7 +9,6 @@ import { BookDetailsComponent } from './book/book-details/book-details.component
 import { EditBookComponent } from './book/edit-book/edit-book.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth-guard.guard';
-import { GuestGuard } from './guards/guest.guard';
 
 const routes: Routes = [
   {
