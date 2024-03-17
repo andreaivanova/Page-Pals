@@ -7,6 +7,7 @@ import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { NewBookComponent } from './book/new-book/new-book.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { EditBookComponent } from './book/edit-book/edit-book.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -36,9 +37,9 @@ const routes: Routes = [
     path: 'books/:_id', component: BookDetailsComponent
   },
   {
-    path: '404',  redirectTo: '/home'
+    path: '404',  component: NotFoundComponent
   },
-  {path: '**', redirectTo: '/home'}
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
