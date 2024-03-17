@@ -15,6 +15,7 @@ export class BookDetailsComponent implements OnInit {
   book!: Book;
   createdOn: string = '';
   comments!: Comment[];
+
   token: string = localStorage.getItem('currentUser')
     ? JSON.parse(localStorage.getItem('currentUser')!).accessToken
     : '';
@@ -40,7 +41,11 @@ export class BookDetailsComponent implements OnInit {
       .commentOnBook(this.token, id, this.user.email, comment, this.user._id)
       .subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
+          this.comments.push(res)
+          // console.log(form.value);
+          form.resetForm();
+          
           this.router.navigate([`/books/${id}`]);
         },
         error: (error) => {
@@ -53,7 +58,7 @@ export class BookDetailsComponent implements OnInit {
     const id = this.activedRoute.snapshot.params['_id'];
     this.bookService.getBook(id).subscribe((book) => {
       this.createdOn = new Date(book._createdOn).toString().slice(0, 15);
-    console.log(book);
+    // console.log(book);
 
       this.book = book;
     });
@@ -75,8 +80,7 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.loadCommentsForACertainPost(bookId).subscribe({
       next: (res) => {
         res = res.filter((comment) => comment._bookId === bookId);
-      
-  
+        
         this.comments = res;
       },
       error: (error) => {
