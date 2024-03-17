@@ -14,7 +14,6 @@ import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { MatchpasswordsDirective } from './validators/matchpasswords.directive';
 
 
 @NgModule({
@@ -24,7 +23,6 @@ import { MatchpasswordsDirective } from './validators/matchpasswords.directive';
     FooterComponent,
     HomeComponent,
     BooksCatalogComponent,
-    MatchpasswordsDirective,
    NotFoundComponent,
   ],
   imports: [
